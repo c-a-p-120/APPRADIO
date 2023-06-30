@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Radio Estacion Mix</title>
+		<link rel="manifest" href="manifest.webmanifest" />
+		<meta name="color-scheme" content="light dark" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Holtwood+One+SC&display=swap">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+        <script src="main.js" type="module"></script>
+      <nav>
+        <ul>
+		<li><a href="#" target="_blank">Facebook</a></li>
+		<li><a href="#" target="_blank">Instagram</a></li>
+		<li><a href="#" target="_blank">Twitter</a></li>
+		<li><a href="#" target="_blank">WhatsApp</a></li>
+		<li><a href="https://masplay.000webhostapp.com/lista-temas.estacionmix.html" target="_blank">Historial de Musica</a></li>
+	 </ul>
+    </nav>
+<center><h1 class="radio-name">Radio Estacion Mix</h1>
+            <button id="installButton" style="display: none"> ⫷ Instalar la  APP ⫸</button> 
+            </center>
+
+            
+</header>
+
+<body>
+    <style>
+    html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        -webkit-user-select: none; /* Safari */
+        -ms-user-select: none; /* IE 10 and IE 11 */
+        user-select: none; /* Standard syntax */
+    }
+    button {
+border: 1px solid #2e518b; /*anchura, estilo y color borde*/
+padding: 10px; /*espacio alrededor texto*/
+background-color: #2e518b; /*color botón*/
+color: #ffffff; /*color texto*/
+text-decoration: none; /*decoración texto*/
+text-transform: uppercase; /*capitalización texto*/
+font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+border-radius: 50px; /*bordes redondos*/
+}
+    body {
+        background: url(https://static4.depositphotos.com/1006724/331/i/600/depositphotos_3310598-stock-photo-in-radio-studio.jpg);
+        text-shadow: 0px 0px 20px #000;
+        background-size: cover;
+        overflow: hidden;
+        color: #fff;
+    }
+    .btn {
+        box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.6) !important;
+    }
+    .margin-top {
+        margin-top: -5px; /* tricky */
+    }
+    .vol-size {
+        font-size: 1.3rem;
+    }
+    .radio-name {
+        font-size: 2rem;
+        font-family: 'Holtwood One SC', serif;
+        color: #fff;
+    }
+    .radio-buttons {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        margin-right: 10vw;
+        margin-left: 10vw;
+        margin-top: 5vh;
+        background-color: rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 20px 2px #000 !important;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+    .radio-volume {
+        margin-left: 10vw;
+        margin-right: 10vw;
+        display: inline-block;
+        margin-top: 5vh;
+    }
+    .radio-volume i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+    pre, h1 {
+    font-size: 1.5em;
+    color: #FF2D00;
+    background-color: transparent;
+}
+
+pre, div {
+    font-size: 1.0em;
+    color: #61FF00;
+    background-color: transparent;
+}
+header {
+  background: rgba(0,0,0,0.7);
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+}
+
+nav {
+  float: center;
+}
+
+nav ul {
+  list-style: none;
+  overflow: hidden; 
+}
+
+nav ul li {
+  float:left;
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+}
+nav ul li a {
+  display: block;
+  padding: 20px;
+  color: #fff;
+  text-decoration: none;
+}
+nav ul li:hover {
+  background: #eca023;
+}
+
+    </style>
+    <div class="container-fluid p-3">
+        <div class="text-center margin-top">
+           
+            <p class="status mt-3">
+                [<span class="icon">
+                    <i class="fas fa-info-circle"></i>
+                </span>] 
+                <span class="text">Cargando...</span>
+            </p>
+            <audio id="player" src="#" autoplay></audio>
+            <div class="radio-buttons">
+                <button type="button" id="play" class="btn btn-success btn-round shadow">
+                    <i class="far fa-play-circle"></i> Play
+                </button>
+                <button type="button" id="pause" class="btn btn-danger shadow">
+                    <i class="far fa-pause-circle"></i> Pause
+                </button>
+                <button type="button" id="stop" class="btn btn-warning shadow">
+                    <i class="far fa-stop-circle"></i> Stop
+                </button>
+            <div class="radio-volume">
+                <div class="form-group">
+                    <label for="vol">
+                        <i class="fas fa-volume-up"></i>
+                    </label>
+                    <input type="range" class="form-control-range" id="vol" value="75" maxvalue="100%">
+                    <span class="vol-size">80%</span>
+                  </div>
+            </div>
+       <script type="text/javascript" src="//api.laut.fm/js_tools/lautfm_js_tools.0.9.1.js" ></script>
+<center><div id="song"></div>
+        	<script>
+		  var sendungcontainer = document.getElementById('sendung');
+		  var show_station = function(station){
+			  sendungcontainer.innerHTML = "DJ/Moderador: " + station['djs'] +
+				"<br>Transmisión: " + station.current_playlist['name'];
+		  }
+		  var songcontainer = document.getElementById('song');
+
+		  var show_song = function(song){
+			  songcontainer.innerHTML = "Título: " + song['title'] +
+				"<br>Interpreta: " + song.artist["name"];
+		  }
+			laut.fm.station('estacionmix').info(show_station, true);
+			laut.fm.station('estacionmix').current_song(show_song, true);
+    	</script>
+    </div></center>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js"></script>
+    <script>
+    const statusText = $('.status .text');
+    const statusIcon = $('.status .icon');
+    const volSize = $('.vol-size');
+    const player = $('#player');
+    const url = "https://listen.openstream.co/6502/audio";
+    
+    const zeroPad = (num, places) => String(num).padStart(places, '0'); // adds zeros to numbers below than 10
+
+    let status = false;
+
+    player.prop('volume', 0.75); // default
+
+    $(document).ready(function() {
+        if (player.attr('src') == '#') {
+            player.attr('src', url);
+        }
+        if (false === status) { // autoplay
+            player.get(0).play().then(function() { // can autoplay
+                status = true;
+                statusText.html('Jugando...');
+                statusIcon.html('<i class="fas fa-volume-up"></i>');
+            }).catch(function() { // throws error, ask to play manual
+                statusText.html('Click <strong>Play</strong> para escuchar!');
+            });
+        }
+        $('#play').click(function() {
+            if (false === status) {
+                status = true;
+                if (player.attr('src') == '#') {
+                    player.attr('src', url);
+                }
+                player.get(0).play();
+                statusText.html('Jugando...');
+                statusIcon.html('<i class="fas fa-volume-up"></i>');
+            }
+        }),
+        $('#pause').click(function() {
+            if (true === status) {
+                status = false;
+                player.get(0).pause();
+                statusText.html('Paused');
+                statusIcon.html('<i class="fas fa-volume-mute"></i>');
+            }
+        }),
+        $('#stop').click(function() {
+            if (true === status) {
+                status = false;
+                player.attr('src', '#');
+                player.get(0).pause();
+                statusText.html('Stopped');
+                statusIcon.html('<i class="fas fa-volume-mute"></i>');
+            }
+        }),
+        $("#vol").change(function() {
+            let volume = $(this).val();
+            volSize.html(zeroPad(volume, 2) + '%');
+            player.prop("volume", volume / 100);
+        });
+    });
+    </script>
+   
+        
+        
+        </head>                                                                            
