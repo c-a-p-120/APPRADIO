@@ -8,7 +8,7 @@
 	"description": "PWA install.",
 	"icons": [
 		{
-			"src": "https://via.placeholder.com/36",
+			"src": "/imagen/maskable_icon_x36.png",
 			"sizes": "36x36",
 			"type": "image/png",
 			"purpose": "any"
