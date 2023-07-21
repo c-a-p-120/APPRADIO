@@ -50,7 +50,7 @@
 			"purpose": "any"
 		},
 		{
-			"src": "https://via.placeholder.com/256",
+			"src": "/imagen/maskable_icon_x256.png",
 			"sizes": "256x256",
 			"type": "image/png",
 			"purpose": "any"
