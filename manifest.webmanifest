@@ -1,11 +1,11 @@
 {
-	"name": "Radio Estacion Mix ",
-	"short_name": "Install",
+	"name": "Radio Estacion Mix",
+	"short_name": "Radio Estacion Mix",
 	"start_url": ".",
 	"display": "standalone",
 	"theme_color": "#000000",
 	"background_color": "#ffffff",
-	"description": "PWA install.",
+	"description": "RADIO APP",
 	"icons": [
 		{
 			"src": "https://c-a-p-120.github.io/APPRADIO/imagen/maskable_icon_x36.png",
